@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Player = ({name, img})=> {
+const Player = ({info})=> {
+    console.log(info);
     return(
-        <div>
-            <img  src={img} alt="IMG"/>
-            <p>{name}</p>
-        </div>
+        <tr>
+            <td><img src={info.img} alt="IMG"/></td>
+            <td>{info.name}</td>
+        </tr>
     );
 }
 
