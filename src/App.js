@@ -1,9 +1,12 @@
 import React from 'react';
 import './App.css';
 
-const App = () => {
+const App = ({name}) => {
   return (
-    <h1>Helo, World!!</h1>
+    <div>
+      <h1>Helo, World!!</h1>
+      <p>Your name is {name}</p>
+    </div>
   );
 }
 
