@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
+import Cw2 from './components/cw2';
 
 const App = ({name}) => {
   return (
     <div>
-      <h1>Helo, World!!</h1>
-      <p>Your name is {name}</p>
-      djkrfvkjdglkdlkglk
+      <Cw2 date={new Date()}/>
     </div>
   );
 }
