@@ -1,0 +1,103 @@
+.hw1 {
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 1200px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr  400px;
+    grid-template-areas: 
+        'head head'
+        'main flag'
+        'main gerb'
+        'main view';
+    gap: 1rem;
+}
+
+.hw1 h1 {
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+    color: brown;
+    text-align: center;
+}
+
+.hw1 .head {
+    grid-area: head;
+}
+
+.hw1 .main {
+    grid-area: main;
+}
+
+.hw1 .main h3 {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: brown;
+    text-align: center;
+}
+
+.hw1 .main p {
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    text-align: justify;
+}
+
+.hw1 .flag {
+    grid-area: flag;
+    text-align: center;
+}
+
+.hw1 .gerb {
+    grid-area: gerb;
+    text-align: center;
+}
+
+.hw1 .view {
+    grid-area: view;
+    text-align: center;
+}
+
+.hw1 .flag img {
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+.hw1 .gerb img {
+    height: auto;
+    width: 100%;
+    max-width: 150px;
+}
+
+.hw1 .view img {
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+.hw1 .flag div, .hw1 .gerb div, .hw1 .view div {
+    font-family: Arial;
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 0.5rem;
+}
+
+@media (max-width: 800px) {
+    .hw1 {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: 
+            'head head'
+            'flag gerb'
+            'view  view'
+            'main main';
+    }
+}
+
+@media (max-width: 600px) {
+    .hw1 {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'head' 'flag' 'gerb' 'view' 'main';
+    }
+}
