@@ -1,35 +1,29 @@
 import React, { useState } from 'react';
 import './hw2.css';
-import MenuItem from './menuitem.js';
-import Page from './page.js';
+import Menu from './menu.js';
+import Main from './main.js';
 import Task1 from './task1/task1.js';
 import Task2 from './task2/task2.js';
 import Task3 from './task3/task3.js';
 
 const Hw2 = ()=> {
-    const [page, setPage] = useState(1);
-
-    const onSelected = (id)=> {
-        if(id !== page) {
-            setPage(id);
-        }
-    }
+    const [page, setPage] = useState(0);
 
     return (
         <div className="hw2">
             <header>
                 <h1>React. Home Work 2</h1>
-                <nav>
-                    <ul>
-                        <MenuItem id={1} active={page} click={onSelected}>Task 1</MenuItem>
-                        <MenuItem id={2} active={page} click={onSelected}>Task 2</MenuItem>
-                        <MenuItem id={3} active={page} click={onSelected}>Task 3</MenuItem>
-                    </ul>
-                </nav>
+                <Menu active={page} onSelect={setPage}>
+                    <div>Task 1</div>
+                    <div>Task 2</div>
+                    <div>Task 3</div>
+                </Menu>
             </header>
-            <Page id={1} active={page}><Task1/></Page>
-            <Page id={2} active={page}><Task2/></Page>
-            <Page id={3} active={page}><Task3/></Page>
+            <Main active={page}>
+                <Task1/>
+                <Task2/>
+                <Task3/>
+            </Main>
             <footer>
                 <div>WEB91 Viktor Nahornyi &copy;</div>
             </footer>
