@@ -1,12 +1,19 @@
 import React from 'react';
+import './task1.css';
+import Songs from './songs.js';
 
 const album = {
     name: "Музіка",
     group: "Воплі Відоплясова",
+    frontman: "Олег Скрипка",
+    edition: "S.B.A Production",
+    year: 1997,
     img: "./hw2/task1/music.jpg",
-    notes: `Цей рок-альбом подорожував космосом у валізі
+    notes: `Виданий групою на честь завершення «французького періоду»
+            та остаточного повернення на Батьківщину.
+            Цей рок-альбом подорожував космосом у валізі
             першого українського космонавта Леоніда Каденюка.
-            Містить трек «Весна», який суперновою вибухнув у серцях українців`,
+            Містить трек «Весна», який суперновою вибухнув у серцях українців.`,
     songs: [
         { id: 1,  name: "Весна" },
         { id: 2,  name: "Юра" },
@@ -25,32 +32,27 @@ const album = {
 
 const Task1 = ()=> {
     return (
-        <>
-            <h3>Мій улюблений музичний альбом</h3>
+        <div className="task1">
+            <h3 className="head">Мій улюблений музичний альбом</h3>
             <div className="name">{album.name}</div>
-            <div className="group">{album.group}</div>
-            <div className="group">{album.notes}</div>
+            <div className="group">
+                <span className="title">Група: </span>
+                <span className="text">{album.group}</span>
+            </div>
+            <div className="frontman">
+                <span className="title">Фронтмен: </span>
+                <span className="text">{album.frontman}</span>
+            </div>
+            <div className="edit">
+                <span className="title">Випущений: </span>
+                <span className="text">{`${album.year} рік, ${album.edition}`}</span>
+            </div>
+            <div className="notes">{album.notes}</div>
             <div className="img">
                 <img src={album.img}/>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>№</th>
-                        <th>Пісня</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {album.songs.map(({id,name,duration})=>{
-                        return (
-                        <tr key={id}>
-                            <td>{id}</td>
-                            <td>{name}</td>
-                        </tr>);
-                    })}
-                </tbody>
-            </table>
-        </>
+            <Songs list={album.songs}/>
+        </div>
     );
 }
 

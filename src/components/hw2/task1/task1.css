@@ -1,0 +1,127 @@
+.task1 {
+    padding: 0.5rem 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        'head head'
+        'name name'
+        'grop grop'
+        'frnt frnt'
+        'edit edit'
+        'note note'
+        'song imag';
+    gap: 0.5rem;
+}
+
+.task1 span.title {
+    font-style: italic;
+    color: grey;
+}
+
+.task1 span.text {
+    font-size: 1.2rem;
+}
+
+.task1 .head {
+    grid-area: head;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-weight: normal;
+}
+
+.task1 .name {
+    grid-area: name;
+    color: brown;
+    font-size: 3rem;
+    text-align: center;
+    text-shadow: 0.25rem 0.25rem 1rem brown;
+    letter-spacing: 10px;
+}
+
+.task1 .group {
+    grid-area: grop;
+}
+
+.task1 .frontman {
+    grid-area: frnt;
+}
+
+.task1 .edit {
+    grid-area: edit;
+}
+
+.task1 .notes {
+    grid-area: note;
+    text-align: justify;
+    padding: 0.5rem 0;
+}
+
+.task1 .img {
+    position: relative;
+    grid-area: imag;
+    overflow: hidden;
+}
+
+.task1 .img img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.task1 table.songs {
+    grid-area: song;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+.task1 table.songs th {
+    padding: 0.5rem 1rem;
+    color: brown;
+    text-align: center;
+    font-weight: normal;
+    border-bottom: 1px solid brown;
+    text-transform: uppercase;
+}
+
+.task1 table.songs th:first-child {
+    width: 30px;
+    text-align: right;
+}
+
+.task1 table.songs th:last-child {
+    width: calc(100% - 50px);
+    text-align: left;
+}
+
+.task1 table.songs td {
+    padding: 0.5rem 1rem;
+    font-style: italic;
+}
+
+.task1 table.songs td:first-child {
+    text-align: right;
+}
+
+@media (max-width: 1000px) {
+    .task1 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'head'
+            'name'
+            'grop'
+            'frnt'
+            'edit'
+            'note'
+            'song'
+            'imag';
+    }
+
+    .task1 .img {
+        height: 480px;
+    }
+}
