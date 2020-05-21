@@ -1,0 +1,177 @@
+.task3 {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 24rem 1fr;
+    grid-template-areas:
+        'head   head' 
+        'photo  data'
+        'skills skills';
+    gap: 1rem;
+}
+
+.task3 .head {
+    grid-area: head;
+    margin: 0;
+    padding: 0.5rem 0;
+    font-weight: normal;
+    color: brown;
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.task3 .photo {
+    grid-area: photo;
+    position: relative;
+    height: 24rem;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.25);
+    overflow: hidden;
+}
+
+.task3 .photo img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.task3 div.data {
+    grid-area: data;
+}
+
+.task3 div.data-input {
+    display: grid;
+    align-items: center;
+    padding: 0.25rem 0;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas: 'name text';
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.task3 div.data-input div:first-child {
+    grid-area: name;
+    color: rgb(167, 167, 167);
+    font-style: italic;
+    text-align: right;
+}
+
+.task3 div.data-input div:last-child {
+    grid-area: text;
+}
+
+.task3 div.data-input div:last-child input {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.2rem;
+    width: calc(100% - 1rem);
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: rgb(243, 243, 243);
+}
+
+.task3 div.data-textarea {
+    display: grid;
+    align-items: flex-start;
+    padding: 0.25rem 0;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas: 'name text';
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.task3 div.data-textarea div:first-child {
+    padding: 0.25rem;
+    grid-area: name;
+    color: rgb(167, 167, 167);
+    font-style: italic;
+    text-align: right;
+}
+
+.task3 div.data-textarea div:last-child {
+    grid-area: text;
+}
+
+.task3 div.data-textarea div:last-child textarea {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    width: calc(100% - 1rem);
+    height: 5rem;
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: rgb(243, 243, 243);
+}
+
+.task3 div.restore {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas: '... button';
+    gap: 0.5rem;
+}
+
+.task3 div.restore div {
+    grid-area: button;
+    padding: 1rem 0;
+}
+
+.task3 div.restore div input {
+    padding: 0.25rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.task3 .skills {
+    padding: 0.5rem 0;
+    grid-area: skills;
+    font-size: 1.2rem;
+}
+
+.task3 .skills h3 {
+    margin: 0;
+    padding: 0.5rem 0;
+    color: brown;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.task3 .skills table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.task3 .skills th {
+    padding: 0.25rem 1rem;
+    font-style: italic;
+    font-weight: normal;
+    color: rgb(190, 190, 190);
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+.task3 .skills th:first-child {
+    width: 30px;
+    text-align: right;
+}
+
+.task3 .skills th:last-child {
+    text-align: left;
+}
+
+.task3 .skills td {
+    padding: 0.25rem 1rem;
+}
+
+.task3 .skills td:first-child {
+    width: 30px;
+    text-align: right;
+    font-style: italic;
+}
+
+.task3 .skills td:last-child {
+    text-align: left;
+}

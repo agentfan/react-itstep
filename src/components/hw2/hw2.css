@@ -44,7 +44,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .hw2 header nav li {

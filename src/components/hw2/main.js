@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Main = ({active, onSelect, children})=> {
+const Main = ({active, children})=> {
     return (
         <>
             {children.map((item, i) => 

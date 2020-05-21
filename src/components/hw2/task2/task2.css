@@ -40,7 +40,11 @@
     transform: translateX(-50%);
 }
 
-.task div.data-item {
+.task2 div.data {
+    grid-area: data;
+}
+
+.task2 div.data-item {
     display: grid;
     padding: 0.25rem 0;
     grid-template-columns: 8rem 1fr;

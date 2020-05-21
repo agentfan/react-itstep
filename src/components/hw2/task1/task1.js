@@ -49,7 +49,7 @@ const Task1 = ()=> {
             </div>
             <div className="notes">{album.notes}</div>
             <div className="img">
-                <img src={album.img}/>
+                <img src={album.img} alt="face of album"/>
             </div>
             <Songs list={album.songs}/>
         </div>
