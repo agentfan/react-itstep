@@ -1,0 +1,111 @@
+.task2 {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    grid-template-areas:
+        'head   head' 
+        'photo  data'
+        'skills skills';
+    gap: 1rem;
+}
+
+.task2 .head {
+    grid-area: head;
+    margin: 0;
+    padding: 0.5rem 0;
+    font-weight: normal;
+    color: brown;
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.task2 .photo {
+    grid-area: photo;
+    position: relative;
+    height: 20rem;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.25);
+    overflow: hidden;
+}
+
+.task2 .photo img {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.task div.data-item {
+    display: grid;
+    padding: 0.25rem 0;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas: 'name text';
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.task2 div.data-item div:first-child {
+    grid-area: name;
+    color: rgb(190, 190, 190);
+    font-style: italic;
+    text-align: right;
+}
+
+.task2 div.data-item div:last-child {
+    grid-area: text;
+}
+
+.task2 .skills {
+    padding: 0.5rem 0;
+    grid-area: skills;
+    font-size: 1.2rem;
+}
+
+.task2 .skills h3 {
+    margin: 0;
+    padding: 0.5rem 0;
+    color: brown;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.task2 .skills table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.task2 .skills th {
+    padding: 0.25rem 1rem;
+    font-style: italic;
+    font-weight: normal;
+    color: rgb(190, 190, 190);
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+.task2 .skills th:first-child {
+    width: 30px;
+    text-align: right;
+}
+
+.task2 .skills th:last-child {
+    text-align: left;
+}
+
+.task2 .skills td {
+    padding: 0.25rem 1rem;
+}
+
+.task2 .skills td:first-child {
+    width: 30px;
+    text-align: right;
+    font-style: italic;
+}
+
+.task2 .skills td:last-child {
+    text-align: left;
+}
