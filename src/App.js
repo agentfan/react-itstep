@@ -1,4 +1,5 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.css';
 import Cw2 from './components/cw2';
 
@@ -33,7 +34,10 @@ const App = () => {
   const [clubData, setClubData] = React.useState(fc);
 
   return (
+    <div>
+      <CssBaseline />
       <Cw2 clubData={clubData}/>
+    </div>
   );
 }
 
