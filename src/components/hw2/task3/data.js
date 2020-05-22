@@ -44,7 +44,7 @@ const Data = ({className, data})=> {
     }
 
     const onCityChanged = (e) => {
-        onCityChanged(e.target.value);
+        setCity(e.target.value);
     }
 
     const onExperienceChanged = (e) => {
