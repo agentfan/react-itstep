@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import setDefaultData from './utils/setDefaultData.js';
-import {Table, TableHead, TableBody, TableRow, TableCell} from "@material-ui/core/";
+import { Table, TableHead, TableBody, TableRow, TableCell } from "@material-ui/core/";
 import ShowTask from './components/showTask.js';
 
-const App = ({name}) => {
+const App = ({ name }) => {
   const listData = JSON.parse(localStorage.getItem("toDoList"));
 
-  if(!listData || listData.length<1){
+  if (!listData || listData.length < 1) {
     setDefaultData();
   }
 
@@ -23,7 +23,7 @@ const App = ({name}) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {toDoList.map( (item, i) => <ShowTask key={id} item={item} index={i}/> )}
+        {toDoList.map((item, i) => <ShowTask key={item.id} item={item} index={i} setToDoList={setToDoList} />)}
       </TableBody>
     </Table>
   );
