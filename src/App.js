@@ -1,14 +1,31 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import setDefaultData from './utils/setDefaultData.js';
+import {Table, TableHead, TableBody, TableRow, TableCell} from "@material-ui/core/";
+import ShowTask from './components/showTask.js';
 
 const App = ({name}) => {
-  return (
-    <div>
-      <h1>Helo, World!!</h1>
-      <p>Your name is {name}</p>
-      hjsgdfvsbkju
-    </div>
+  const listData = JSON.parse(localStorage.getItem("toDoList"));
 
+  if(!listData || listData.length<1){
+    setDefaultData();
+  }
+
+  const [toDoList, setToDoList] = useState(JSON.parse(localStorage.getItem("toDoList")));
+
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell>#</TableCell>
+          <TableCell>Text</TableCell>
+          <TableCell>Done</TableCell>
+          <TableCell>Delete</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {toDoList.map( (item, i) => <ShowTask key={id} item={item} index={i}/> )}
+      </TableBody>
+    </Table>
   );
 }
 
