@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.css';
-import Hw3 from './components/hw3';
+import Hw3 from './components/hw3/hw3.js';
 
 const App = () => {
-  const [clubData, setClubData] = React.useState(fc);
-
   return (
-      <hw3 clubData={clubData}/>
+      <Hw3/>
   );
 }
 
