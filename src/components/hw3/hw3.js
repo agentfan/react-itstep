@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, CssBaseline } from '@material-ui/core';
 import Home from './home.js';
 import Hill from './hill.js';
 import Places from './places.js';
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
         '& header': {
             position: 'sticky',
             top: '0',
+            backgroundColor: 'white',
             '& .upheader': {
                 maxWidth: '1200px',
                 margin: '0 auto',
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
                 backgroundColor: 'rgb(24,24,24)',
                 padding: '0',
                 margin: '0',
+                boxShadow: '0 0.25rem 0.5rem rgba(0,0,0,0.3)',
                 '& ul': {
                     listStyle: 'none',
                     height: '3rem',
@@ -81,6 +83,7 @@ const Hw3 = ()=> {
     console.log(classes);
     return (
         <Router>
+            <CssBaseline />
             <div className={classes.root}>
                 <header>
                     <div className="upheader">Чарівне місто Черкаси</div>
