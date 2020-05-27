@@ -19,8 +19,10 @@ const useStyles = makeStyles({
             position: 'sticky',
             top: '0',
             backgroundColor: 'white',
+            zIndex: '100',
             '& .upheader': {
                 maxWidth: '1200px',
+                minWidth: '650px',
                 margin: '0 auto',
                 padding: '1rem',
                 height: '4rem',
@@ -32,6 +34,7 @@ const useStyles = makeStyles({
                 padding: '0',
                 margin: '0',
                 boxShadow: '0 0.25rem 0.5rem rgba(0,0,0,0.3)',
+                minWidth: '650px',
                 '& ul': {
                     listStyle: 'none',
                     height: '3rem',
@@ -62,7 +65,8 @@ const useStyles = makeStyles({
         '& main': {
             margin: '0 auto',
             padding: '0 0.5rem',
-            maxWidth: '1200px'
+            maxWidth: '1200px',
+            minWidth: '650px',
         },
         '& footer': {
             margin: '0 auto',
@@ -72,7 +76,8 @@ const useStyles = makeStyles({
                 height: '3rem',
                 margin: '0 auto',
                 padding: '1rem 0.5rem',
-                maxWidth: '1200px'
+                maxWidth: '1200px',
+                minWidth: '650px'
             }
         }
     }
@@ -102,7 +107,7 @@ const Hw3 = ()=> {
                                 <NavLink to="/gallery" activeClassName="active">Галерея</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/add" activeClassName="active">Додайти фото</NavLink>
+                                <NavLink to="/add" activeClassName="active">Додати фото</NavLink>
                             </li>
                         </ul>
                     </nav>
