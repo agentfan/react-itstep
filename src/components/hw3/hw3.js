@@ -129,6 +129,9 @@ const Hw3 = ()=> {
                         <Route path="/home">
                             <Home/>
                         </Route>
+                        <Route path="/">
+                            <Home/>
+                        </Route>
                     </Switch>
                 </main>
                 <footer>
