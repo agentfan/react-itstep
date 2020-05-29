@@ -38,7 +38,7 @@ const App = () => {
   }, [albumIdArray]);
 
   return (
-    <div>
+    <div style={{maxWidth: '1200px', margin: '0.5rem auto'}}>
       <Router>
         <nav>
           <ul>
@@ -51,8 +51,15 @@ const App = () => {
         </nav>
         <Switch>
             {albumImages.map(item => {
+              console.log(item);
               return <Route key={item.id} path={`/${item.id}`}>
-                <div>{item.id}</div>
+                <div>
+                  {item.images.map((img => 
+                    <div style={{borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0'}}>
+                      <img src={img.link} style={{width: '100%', height: 'auto'}}/>
+                    </div>
+                  ))}
+                </div>
               </Route>
             })}
         </Switch>
