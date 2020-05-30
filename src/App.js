@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getAlbumId, getAlbumImages } from './utils/API.js';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles({
+  root: {
+    '& nav':{
+      display: 'flex'
+    }
+  }
+});
 
 const App = () => {
   const [albumIdArray, setAlbumIdArray] = useState([]);
@@ -32,13 +36,20 @@ const App = () => {
             );
             number++;
             if(number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
+          })
+          .catch(error => {
+            console.log(`Error on get to ${hash}: ${error}`);
+            number++;
+            if(number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
           });
       });
     }
   }, [albumIdArray]);
 
+  const classes = useStyles();
+
   return (
-    <div style={{maxWidth: '1200px', margin: '0.5rem auto'}}>
+     <div className={classes.root}>
       <Router>
         <nav>
           <ul>
