@@ -2,12 +2,22 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { getAlbumId, getAlbumImages } from './utils/API.js';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, CssBaseline, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    '& nav':{
+    '& nav': {
       display: 'flex'
+    }
+  },
+  nav: {
+    '& ul': {
+      display: 'flex',
+      listStyle: 'none',
+      '& li a': {
+        padding: '1rem',
+        textDecoration: 'none'
+      }
     }
   }
 });
@@ -35,12 +45,12 @@ const App = () => {
               }
             );
             number++;
-            if(number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
+            if (number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
           })
           .catch(error => {
             console.log(`Error on get to ${hash}: ${error}`);
             number++;
-            if(number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
+            if (number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
           });
       });
     }
@@ -49,32 +59,36 @@ const App = () => {
   const classes = useStyles();
 
   return (
-     <div className={classes.root}>
-      <Router>
-        <nav>
-          <ul>
-            {albumIdArray.map(item =>
-              <li>
-                <Link key={item} to={`/${item}`}>{item}</Link>
-              </li>
-            )}
-          </ul>
-        </nav>
-        <Switch>
+    <div className={classes.root}>
+      <CssBaseline />
+      <Grid container spacing={3}>
+        <Router>
+          <Grid item xs={12}>
+            <nav className={classes.nav}>
+              <ul>
+                {albumIdArray.map(item =>
+                  <li>
+                    <Link key={item} to={`/${item}`}>{item}</Link>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          </Grid>
+          <Switch>
             {albumImages.map(item => {
-              console.log(item);
               return <Route key={item.id} path={`/${item.id}`}>
-                <div>
-                  {item.images.map((img => 
-                    <div style={{borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0'}}>
-                      <img src={img.link} style={{width: '100%', height: 'auto'}}/>
+                <Grid item xs={12} xm={6} xl={4}>
+                  {item.images.map((img =>
+                    <div style={{ borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0' }}>
+                      <img src={img.link} style={{ width: '100%', height: 'auto' }} />
                     </div>
                   ))}
-                </div>
+                </Grid>
               </Route>
             })}
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </Grid>
     </div>
   );
 }
