@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const StoreContext = React.createContext(null)
+export const StoreContext = React.createContext(null);
 
 export default ({ children }) => {
     const eventsArray = [
