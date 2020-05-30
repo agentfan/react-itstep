@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getAlbumId, getAlbumImages } from './utils/API.js';
+import { getAlbumId, getAlbumData } from './utils/API.js';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles, CssBaseline, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    '& nav': {
-      display: 'flex'
-    }
+    maxWidth: '1200px',
+    margin: '0 auto',
+    backgroundColor: 'grey'
   },
   nav: {
     '& ul': {
@@ -28,29 +28,31 @@ const App = () => {
 
   useEffect(() => {
     getAlbumId()
-      .then(res => setAlbumIdArray(res.data.data));
+      .then(res => setAlbumIdArray({id:res.data.data, title: ""}));
   }, []);
 
   useEffect(() => {
     if (albumIdArray) {
       let tmpAlbumImages = [];
       let number = 0;
-      albumIdArray.map((hash) => {
-        getAlbumImages(hash)
+      albumIdArray.map((album) => {
+        return getAlbumData(album.id)
           .then(res => {
+            album.title = res.data.title;
             tmpAlbumImages.push(
               {
-                id: hash,
-                images: res.data.data
+                id: album.id,
+                title: res.data.title,
+                images: res.data.images
               }
             );
             number++;
-            if (number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
+            if (number === albumIdArray.length) setAlbumImages(tmpAlbumImages);
           })
           .catch(error => {
-            console.log(`Error on get to ${hash}: ${error}`);
+            console.log(`Error on get to ${album.id}: ${error}`);
             number++;
-            if (number == albumIdArray.length) setAlbumImages(tmpAlbumImages);
+            if (number === albumIdArray.length) setAlbumImages(tmpAlbumImages);
           });
       });
     }
@@ -68,7 +70,7 @@ const App = () => {
               <ul>
                 {albumIdArray.map(item =>
                   <li>
-                    <Link key={item} to={`/${item}`}>{item}</Link>
+                    <Link key={item.id} to={`/${item.id}`}>{item.title}</Link>
                   </li>
                 )}
               </ul>
@@ -77,10 +79,10 @@ const App = () => {
           <Switch>
             {albumImages.map(item => {
               return <Route key={item.id} path={`/${item.id}`}>
-                <Grid item xs={12} xm={6} xl={4}>
+                <Grid item xs={12} ms={6} xl={4}>
                   {item.images.map((img =>
-                    <div style={{ borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0' }}>
-                      <img src={img.link} style={{ width: '100%', height: 'auto' }} />
+                    <div key={img.id} style={{ borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0' }}>
+                      <img src={img.link} style={{ width: '100%', height: 'auto' }} alt={img.id} />
                     </div>
                   ))}
                 </Grid>
