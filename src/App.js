@@ -8,42 +8,60 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '1200px',
     margin: '0 auto',
-    backgroundColor: 'grey'
   },
   nav: {
     '& ul': {
       display: 'flex',
       listStyle: 'none',
+      backgroundColor: 'brown',
+      padding: '0.5rem',
       '& li a': {
         padding: '1rem',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        color: 'white'
       }
+    }
+  },
+  img: {
+    borderRadius: '1rem',
+    overflow: 'hidden',
+    boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)',
+    margin: '1rem 0',
+    '& img': {
+      width: '100%',
+      height: 'auto' 
     }
   }
 });
 
 const App = () => {
   const [albumIdArray, setAlbumIdArray] = useState([]);
+  console.log("IDArray:",albumIdArray);
   const [albumImages, setAlbumImages] = useState([]);
+  console.log("Images:",albumImages);
 
   useEffect(() => {
     getAlbumId()
-      .then(res => setAlbumIdArray({id:res.data.data, title: ""}));
+      .then(res => {
+        const tmpArray = res.data.data.map( item => {return {id: item, title:""};});
+        setAlbumIdArray(tmpArray);
+      });
   }, []);
 
   useEffect(() => {
     if (albumIdArray) {
       let tmpAlbumImages = [];
       let number = 0;
-      albumIdArray.map((album) => {
+      albumIdArray.map( album => {
         return getAlbumData(album.id)
           .then(res => {
-            album.title = res.data.title;
+            console.log("res:",res);
+            album.title = res.data.data.title;
             tmpAlbumImages.push(
               {
                 id: album.id,
-                title: res.data.title,
-                images: res.data.images
+                title: res.data.data.title,
+                images: res.data.data.images
               }
             );
             number++;
@@ -78,15 +96,17 @@ const App = () => {
           </Grid>
           <Switch>
             {albumImages.map(item => {
-              return <Route key={item.id} path={`/${item.id}`}>
+              return (
+              <Route key={item.id} path={`/${item.id}`}>
                 <Grid item xs={12} ms={6} xl={4}>
                   {item.images.map((img =>
-                    <div key={img.id} style={{ borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)', margin: '1rem 0' }}>
-                      <img src={img.link} style={{ width: '100%', height: 'auto' }} alt={img.id} />
+                    <div className={classes.img} key={img.id}>
+                      <img src={img.link} alt={img.id} />
                     </div>
                   ))}
                 </Grid>
               </Route>
+              )
             })}
           </Switch>
         </Router>
