@@ -10,26 +10,37 @@ const useStyles = makeStyles({
     margin: '0 auto',
   },
   nav: {
+    margin: '0',
+    padding: '0',
     '& ul': {
+      margin: '0',
       display: 'flex',
       listStyle: 'none',
       backgroundColor: 'brown',
-      padding: '0.5rem',
+      padding: '1rem',
       '& li a': {
+        textTransform: 'uppercase',
+        letterSpacing: '0.1rem',
         padding: '1rem',
         textDecoration: 'none',
         color: 'white'
-      }
+      },
+      '& li a:hover': {
+        textShadow: '0 0 0.5rem yellow'
+      },
     }
   },
   img: {
     borderRadius: '1rem',
+    height: '100%',
     overflow: 'hidden',
     boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)',
-    margin: '1rem 0',
+    margin: '0.5rem',
+    padding: '0.5rem',
     '& img': {
       width: '100%',
-      height: 'auto' 
+      height: 'auto',
+      borderRadius: '0.5rem',
     }
   }
 });
@@ -64,11 +75,8 @@ const App = () => {
                 images: res.data.data.images
               }
             );
-            number++;
-            if (number === albumIdArray.length) setAlbumImages(tmpAlbumImages);
           })
-          .catch(error => {
-            console.log(`Error on get to ${album.id}: ${error}`);
+          .finally(() => {
             number++;
             if (number === albumIdArray.length) setAlbumImages(tmpAlbumImages);
           });
@@ -87,8 +95,8 @@ const App = () => {
             <nav className={classes.nav}>
               <ul>
                 {albumIdArray.map(item =>
-                  <li>
-                    <Link key={item.id} to={`/${item.id}`}>{item.title}</Link>
+                  <li key={item.id}>
+                    <Link to={`/${item.id}`}>{item.title}</Link>
                   </li>
                 )}
               </ul>
@@ -98,13 +106,13 @@ const App = () => {
             {albumImages.map(item => {
               return (
               <Route key={item.id} path={`/${item.id}`}>
-                <Grid item xs={12} ms={6} xl={4}>
                   {item.images.map((img =>
-                    <div className={classes.img} key={img.id}>
-                      <img src={img.link} alt={img.id} />
-                    </div>
+                    <Grid key={img.id} xs={12} sm={6} md={4}>
+                      <div className={classes.img}>
+                        <img src={img.link} alt={img.id} />
+                      </div>
+                    </Grid>
                   ))}
-                </Grid>
               </Route>
               )
             })}
