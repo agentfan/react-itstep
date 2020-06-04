@@ -31,30 +31,48 @@ const useStyles = makeStyles({
     }
   },
   img: {
-    borderRadius: '1rem',
-    height: '100%',
-    overflow: 'hidden',
-    boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)',
-    margin: '0.5rem',
-    padding: '0.5rem',
-    '& img': {
-      width: '100%',
-      height: 'auto',
+    '& div': {
+      position: 'relative',
       borderRadius: '0.5rem',
+      boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)',
+      margin: '0.5rem',
+      overflow: 'hidden',
+      padding: '0',
+      lineHeight: '0',
+      '& img': {
+        width: '100%',
+        height: 'auto'
+      },
+      '& div': {
+        position: 'absolute',
+        bottom: '0',
+        left: '0',
+        padding: '1rem 2rem',
+        margin: '0',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        borderRadius: '0',
+        width: '100%',
+        '& p': {
+          color: 'white',
+          padding: '0',
+          margin: '0',
+          fontStyle: 'italic'
+        }
+      }
     }
   }
 });
 
 const App = () => {
   const [albumIdArray, setAlbumIdArray] = useState([]);
-  console.log("IDArray:",albumIdArray);
+  console.log("IDArray:", albumIdArray);
   const [albumImages, setAlbumImages] = useState([]);
-  console.log("Images:",albumImages);
+  console.log("Images:", albumImages);
 
   useEffect(() => {
     getAlbumId()
       .then(res => {
-        const tmpArray = res.data.data.map( item => {return {id: item, title:""};});
+        const tmpArray = res.data.data.map(item => { return { id: item, title: "" }; });
         setAlbumIdArray(tmpArray);
       });
   }, []);
@@ -63,16 +81,16 @@ const App = () => {
     if (albumIdArray) {
       let tmpAlbumImages = [];
       let number = 0;
-      albumIdArray.map( album => {
+      albumIdArray.map(album => {
         return getAlbumData(album.id)
           .then(res => {
-            console.log("res:",res);
+            console.log("res:", res);
             album.title = res.data.data.title;
             tmpAlbumImages.push(
               {
                 id: album.id,
                 title: res.data.data.title,
-                images: res.data.data.images
+                images: res.data.data.images.map(item => {return {id: item.id, link: item.link, description: item.description}})
               }
             );
           })
@@ -89,7 +107,7 @@ const App = () => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Router>
           <Grid item xs={12}>
             <nav className={classes.nav}>
@@ -105,15 +123,16 @@ const App = () => {
           <Switch>
             {albumImages.map(item => {
               return (
-              <Route key={item.id} path={`/${item.id}`}>
+                <Route key={item.id} path={`/${item.id}`}>
                   {item.images.map((img =>
-                    <Grid key={img.id} xs={12} sm={6} md={4}>
-                      <div className={classes.img}>
+                    <Grid item className={classes.img} key={img.id} xs={12} sm={6} md={4}>
+                      <div>
                         <img src={img.link} alt={img.id} />
+                        {img.description && <div><p>{img.description}</p></div>}
                       </div>
                     </Grid>
                   ))}
-              </Route>
+                </Route>
               )
             })}
           </Switch>
