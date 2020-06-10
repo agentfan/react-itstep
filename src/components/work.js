@@ -6,7 +6,6 @@ const useStyles = makeStyles({
     root: {
         position: 'relative',
         maxWidth: '360px',
-        height: '500px',
         cursor: 'pointer',
         '& a': {
             textDecoration: 'none'

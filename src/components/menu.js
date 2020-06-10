@@ -13,6 +13,7 @@ const useStyles = makeStyles({
         '& > h1': {
             fontFamily: 'TimesNewRoman, serif',
             maxWidth: '1200px',
+            minWidth: '750px',
             margin: '0 auto',
             height: '4rem',
             padding: '0 0.5rem 0rem',
@@ -29,6 +30,7 @@ const useStyles = makeStyles({
             '& ul': {
                 listStyle: 'none',
                 maxWidth: '1200px',
+                minWidth: '750px',
                 height: '3rem',
                 margin: '0 auto',
                 padding: '0 0.5rem',

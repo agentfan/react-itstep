@@ -7,6 +7,7 @@ import Work from './work';
 const useStyles = makeStyles({
     root: {
         maxWidth: '1200px',
+        minWidth: '750px',
         margin: '0 auto',
         padding: '0 0.5rem',
         height: 'calc(100vh - 7rem)',
