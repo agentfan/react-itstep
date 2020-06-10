@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
     root: {
         position: 'relative',
-        width: '300px',
+        maxWidth: '360px',
         height: '500px',
         cursor: 'pointer',
         '& a': {
@@ -13,19 +13,14 @@ const useStyles = makeStyles({
         }
     },
     img: {
-        position: 'relative',
-        height: '450px',
         padding: '0',
         borderRadius: '0.5rem',
         boxShadow: '0 0 0.5rem rgba(0,0,0,0.5)',
+        lineHeight: '0',
         overflow: 'hidden',
         '& img': {
-            position: 'absolute',
             width: '100%',
             height: 'auto',
-            top: '50%',
-            left: '0',
-            transform: 'translateY(-50%)'
         }
     },
     title: {
