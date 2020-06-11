@@ -27,6 +27,7 @@ const useStyles = makeStyles({
             height: '3rem',
             padding: '0',
             margin: '0',
+            boxShadow: '0 0.25rem 0.25rem rgba(0,0,0,0.4)',
             '& ul': {
                 listStyle: 'none',
                 maxWidth: '1200px',

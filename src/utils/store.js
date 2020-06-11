@@ -161,6 +161,7 @@ const infoOfPainter = {
                     title: "Жінка в зеленому",
                     year: 1866,
                     img: 'Camille.jpg',
+                    likes: 3,
                     notes: [
                         {
                             id: 0,
@@ -187,6 +188,7 @@ const infoOfPainter = {
                     title: "Тераса в Сент-Адресс",
                     year: 1867,
                     img: 'Garden_at_Sainte_Adresse.jpg',
+                    likes: 4,
                     notes: [
                         {
                             id: 0,
@@ -246,6 +248,7 @@ const infoOfPainter = {
                     title: "Жінки в саду",
                     year: 1866,
                     img: 'Women_in_garden.jpg',
+                    likes: 0,
                     notes: [
                         {
                             id: 0,
@@ -313,6 +316,7 @@ const infoOfPainter = {
                     title: "Жінка з парасолькою",
                     year: 1875,
                     img: 'Umbrella.jpg',
+                    likes: 1,
                     notes: [
                         {
                             id: 0,
@@ -345,6 +349,7 @@ const infoOfPainter = {
                     title: "Враження. Схід сонця",
                     year: 1872,
                     img: 'Impression_soleil_levant.jpg',
+                    likes: 4,
                     notes: [
                         {
                             id: 0,
@@ -384,6 +389,7 @@ const infoOfPainter = {
                     title: "Поле маків у Аржантея",
                     year: 1873,
                     img: 'Poppies.jpg',
+                    likes: 13,
                     notes: [
                         {
                             id: 0,
@@ -405,6 +411,7 @@ const infoOfPainter = {
                     title: "Бульвар Капуцинок",
                     year: 1873,
                     img: 'Boulevard_capucines.jpg',
+                    likes: 7,
                     notes: [
                         {
                             id: 0,
@@ -460,6 +467,7 @@ const infoOfPainter = {
                     title: "Водяні лілії",
                     year: 1906,
                     img: 'Water_Lilies.jpg',
+                    likes: 24,
                     notes: [
                         {
                             id: 0,
@@ -495,6 +503,7 @@ const infoOfPainter = {
                     title: "Руанський собор: головний вхід на сонці",
                     year: 1894,
                     img: 'Rouen_Cathedral.jpg',
+                    likes: 0,
                     notes: [
                         {
                             id: 0,
@@ -516,6 +525,7 @@ const infoOfPainter = {
                     title: "Копиці сіна",
                     year: 1891,
                     img: 'haystack.webp',
+                    likes: 107,
                     notes: [
                         {
                             id: 0,
