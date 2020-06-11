@@ -20,7 +20,8 @@ const useStyles = makeStyles({
     gallary: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'flex-start'
     }
 });
 

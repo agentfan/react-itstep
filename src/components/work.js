@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core';
+import { StoreContext } from '../utils/store';
 import { Link } from "react-router-dom";
+import onLikeClicked from '../utils/onLikeClicked';
 
 const useStyles = makeStyles({
     root: {
@@ -28,11 +30,32 @@ const useStyles = makeStyles({
         fontStyle: 'italic',
         color: 'grey',
         textDecoration: 'none',
+    },
+    like: {
+        position: 'absolute',
+        bottom: '0.5rem',
+        right: '0',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        '& div:first-child': {
+            height: '1rem',
+            width: '1.5rem',
+            '& img': {
+                height: '100%',
+                width: 'auto'
+            }
+        }
     }
 });
 
 const Work = ({ period, work }) => {
+    const {painter: [painter, setPainter]} = useContext(StoreContext);    
     const classes = useStyles();
+
+    const handleLikeClicked = ()=> {
+        onLikeClicked(period, work.id, painter, setPainter);
+    }
 
     return (
         <div className={classes.root}>
@@ -44,6 +67,10 @@ const Work = ({ period, work }) => {
                     {`"${work.title}" ${work.year}`}
                 </div>
             </Link>
+            <div className={classes.like} onClick={handleLikeClicked}>
+                    <div><img src='./images/like.svg'/></div>
+                    <div>{work.likes}</div>                 
+            </div>
         </div>
     );
 }

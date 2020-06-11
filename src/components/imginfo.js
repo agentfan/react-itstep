@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { StoreContext } from '../utils/store';
 import { withRouter} from "react-router-dom";
+import onLikeClicked from '../utils/onLikeClicked';
 
 const useStyles = makeStyles({
     root: {
@@ -21,9 +22,27 @@ const useStyles = makeStyles({
         padding: '1rem 0rem',
         fontSize: '2rem',
         fontStyle: 'italic',
-        '& span':{
+        display: 'flex',
+        alignItems:'center',
+        '& .year':{
+            padding: '0 1rem',
             fontSize: '1.5rem'
-        }
+        },
+        '& .like': {
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            '& div:first-child': {
+                padding: '0 0.5rem',
+                height: '1.5rem',
+                width: '2.5rem',
+                '& img': {
+                    height: '100%',
+                    width: 'auto'
+                }
+            }
+        }        
     },
     img: {
         padding: '0',
@@ -39,18 +58,27 @@ const ImgInfo = (props)=> {
     const classes = useStyles();
 
     const periodId = parseInt(props.match.params.period);
-    console.log(periodId);
     const period = painter.periods.find(p => p.id === periodId);
     if(!period) return <div>Not found</div>;
 
     const id = parseInt(props.match.params.work);
-    console.log(id);
     const work = period.works.find(w => w.id === id);
     if(!work) return <div>Not found</div>;
 
+    const handleLikeClicked = ()=> {
+        onLikeClicked(periodId, id, painter, setPainter);
+    }
+
     return (
         <div className={classes.root}>
-            <div className={classes.title}>{`"${work.title}"`} <span>{work.year}</span></div>
+            <div className={classes.title}>
+                <div className="title">{`"${work.title}"`}</div>
+                <div className="year">{work.year}</div>
+                <div className="like" onClick={handleLikeClicked}>
+                    <div><img src='../images/like.svg'/></div>
+                    <div>{work.likes}</div>                 
+                </div>
+            </div>                
             <div className={classes.img}>
                 <img src={`../images/${work.img}`} alt={work.title} />
             </div>
